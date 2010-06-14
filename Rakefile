@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "subj3ct"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Ruby bindings for Subj3ct.com, the DNS for the semantic web.}
+    gem.description = File.read(File.join(File.dirname(__FILE__), "GemDescription.sm"))
     gem.email = "bb--github.com@bock.be"
     gem.homepage = "http://github.com/bb/subj3ct"
     gem.authors = ["Benjamin Bock"]
