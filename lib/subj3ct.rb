@@ -9,7 +9,9 @@ begin
   require 'subj3ct/query'
   require 'subj3ct/register'
   require 'subj3ct/feed'
-rescue LoadError
-  $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__)))
+rescue LoadError => e
+  here_path = File.expand_path(File.dirname(__FILE__))
+  raise e if $LOAD_PATH.include?(here_path)
+  $LOAD_PATH.unshift(here_path)
   retry
 end
