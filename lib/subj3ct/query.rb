@@ -23,13 +23,13 @@ module Subj3ct
       SearchResult.new(request("/webaddresses", params.merge(:uri => representationUri)))
     end
 
-    # uriStartsWith: Must be a URI value. All subjects whose identifier starts with the URI provided are returned.
+    # uri: Must be a URI value. All subjects whose identifier starts with the URI provided are returned. Be sure not to include http:// in the query or it will return nothing.
     # [optional] skip: An integer value that indicates how many results to skip before the service starts returning results.
     # [optional] take: An integer value that indicates how many results to take and return. [Default = 10, Max Cut Off = 50]
     # [optional] format: Allowed values are [default]'xml', 'json'. Used to indicate the representation format to be returned.
     # [optional] callback: Any string that will be used to wrap the json returned. Ignored if the format value is not 'json'
     def starts_with(uri, params={})
-      SearchResult.new(request("/identifiers", params.merge(:uriStartsWith => uri)))
+      SearchResult.new(request("/identifiers", params.merge(:uri => uri)))
     end
 
     # query: String value. The query term is used to search the subjects to find matches based on name, description and identifier. For more information and syntax for advanced options please see the guide on portal search options.
@@ -133,6 +133,11 @@ module Subj3ct
         @subjects = (result["Subjects"] || []).map do |subject_hash|
           SubjectResult.new(subject_hash)
         end
+      end
+      
+      # TODO: should Enumerable be included here? Or all its methods delegated?
+      def each(*args,&block)
+        @subjects.each(*args, &block)
       end
       
       def size

@@ -63,9 +63,8 @@ The official name is "Subj3ct", however in this API, you can also use "Subject" 
 
 ## Plans
 
- * starts_with doesn't work at all. It looks like this is a server side problem.
  * Documentation. Currently the code is barely documented, this should be changed soon.
- * Write tests. Uh... of course we have tests... they're almost done...
+ * Write more tests: fetching, pagination, ...
  * Write support. Currently this lib is only reading subj3ct.com. It should be able to register feeds with the service and to create a feed from existing data.
  * Caching. A minimal caching solution should be built in.
  * Reduce dependencies. Currently this lib uses active_support only for `blank?`. Instead of open-uri a direct HTTP call could be done.
